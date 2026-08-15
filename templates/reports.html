@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block page_heading %}Prediction Reports{% endblock %}
+{% block content %}<div class="mt-4"><span class="page-kicker">AI ANALYTICS</span><h2>Prediction History</h2></div>
+<div class="card panel mt-3"><div class="card-body table-responsive"><table class="table align-middle"><thead><tr><th>Roll No.</th><th>Name</th><th>Result</th><th>Confidence</th><th>Algorithm</th><th>Date</th></tr></thead><tbody>
+{% for r in rows %}<tr><td>{{r.roll_no}}</td><td>{{r.name}}</td><td><span class="badge {% if r.predicted_result=='Pass' %}text-bg-success{% else %}text-bg-danger{% endif %}">{{r.predicted_result}}</span></td><td>{% if r.confidence is not none %}{{'%.2f'|format(r.confidence*100)}}%{% else %}-{% endif %}</td><td>{{r.algorithm}}</td><td>{{r.prediction_date}}</td></tr>{% else %}<tr><td colspan="6" class="text-center text-muted py-4">No predictions available.</td></tr>{% endfor %}
+</tbody></table></div></div>{% endblock %}
