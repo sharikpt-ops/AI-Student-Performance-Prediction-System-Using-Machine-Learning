@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}
+<div class="container"><div class="head"><h2>Faculty Management</h2><a class="btn primary" href="{{ url_for('add_faculty') }}">+ Add Faculty</a></div>
+{% with messages=get_flashed_messages(with_categories=true) %}{% for c,m in messages %}<div class="alert {{c}}">{{m}}</div>{% endfor %}{% endwith %}
+<table><thead><tr><th>ID</th><th>Faculty Name</th><th>Email</th><th>Mobile</th><th>Action</th></tr></thead><tbody>
+{% for f in faculty %}<tr><td>{{f.faculty_id}}</td><td>{{f.faculty_name}}</td><td>{{f.email or '-'}}</td><td>{{f.mobile or '-'}}</td><td><a class="btn" href="{{url_for('edit_faculty',faculty_id=f.faculty_id)}}">Edit</a> <form method="post" action="{{url_for('delete_faculty',faculty_id=f.faculty_id)}}" class="inline" onsubmit="return confirm('Delete this faculty record?');"><button class="btn danger">Delete</button></form></td></tr>{% else %}<tr><td colspan="5">No faculty records found.</td></tr>{% endfor %}
+</tbody></table></div>{% endblock %}

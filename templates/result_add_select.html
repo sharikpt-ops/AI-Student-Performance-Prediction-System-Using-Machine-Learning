@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block page_heading %}Add Academic Result{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mt-4"><div><span class="page-kicker">ACADEMIC RESULTS</span><h2>Select Student</h2>
+<p class="text-muted mb-0">Select the student for whom you want to enter semester result.</p></div>
+<a class="btn" href="{{ url_for('results') }}">Back to Results</a></div>
+<div class="card panel mt-3"><div class="card-body table-responsive">
+<table class="table align-middle"><thead><tr><th>Roll No.</th><th>Name</th><th>Department</th><th>Semester</th><th>Action</th></tr></thead>
+<tbody>{% for s in students %}
+<tr><td>{{ s.roll_no }}</td><td>{{ s.name }}</td><td>{{ s.department or '-' }}</td><td>{{ s.semester or '-' }}</td>
+<td><a class="btn btn-sm btn-primary" href="{{ url_for('add_result', student_id=s.student_id) }}">Add Result</a></td></tr>
+{% else %}<tr><td colspan="5" class="text-center text-muted py-4">No students found. Add a student first.</td></tr>{% endfor %}</tbody></table>
+</div></div>
+{% endblock %}

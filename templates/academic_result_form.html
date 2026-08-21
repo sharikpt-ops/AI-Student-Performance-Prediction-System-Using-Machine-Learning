@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-header">
+  <div><h1>{{ 'Modify' if result else 'Add' }} Academic Result</h1></div>
+</div>
+<div class="card form-card">
+<form method="post">
+  <label>Student</label>
+  <select name="student_id" required>
+    {% for s in students %}
+    <option value="{{ s.student_id }}" {% if result and result.student_id == s.student_id %}selected{% endif %}>
+      {{ s.roll_no }} - {{ s.name }}
+    </option>
+    {% endfor %}
+  </select>
+  <label>Semester</label><input type="number" name="semester" min="1" max="20" value="{{ result.semester if result else '' }}" required>
+  <label>Subject</label><input type="text" name="subject" value="{{ result.subject if result else '' }}" required>
+  <label>Marks</label><input type="number" step="0.01" name="marks" value="{{ result.marks if result else '' }}" required>
+  <label>Maximum Marks</label><input type="number" step="0.01" name="max_marks" value="{{ result.max_marks if result else 100 }}" required>
+  <label>Grade</label><input type="text" name="grade" value="{{ result.grade if result else '' }}">
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn" href="{{ url_for('results') }}">Cancel</a>
+  </div>
+</form>
+</div>
+{% endblock %}

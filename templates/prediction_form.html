@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block page_heading %}Modify Prediction{% endblock %}
+{% block content %}
+<div class="container narrow mt-4">
+<div class="head"><div><h2>Modify Prediction</h2><p>Student: <b>{{ prediction.name }}</b> ({{ prediction.roll_no }})</p></div>
+<a class="btn" href="{{ url_for('predictions') }}">Back</a></div>
+<form method="post" class="card panel p-4">
+<label>Prediction Result *</label>
+<select name="predicted_result" class="form-select mb-3" required>
+<option value="Pass" {% if prediction.predicted_result == 'Pass' %}selected{% endif %}>Pass</option>
+<option value="Fail" {% if prediction.predicted_result == 'Fail' %}selected{% endif %}>Fail</option>
+</select>
+<label>Confidence (0 to 1)</label>
+<input class="form-control mb-3" type="number" name="confidence" min="0" max="1" step="0.0001" value="{{ prediction.confidence if prediction.confidence is not none else '' }}">
+<label>Algorithm *</label>
+<input class="form-control mb-3" name="algorithm" required value="{{ prediction.algorithm }}">
+<button class="btn btn-primary" type="submit">Update Prediction</button>
+</form></div>
+{% endblock %}

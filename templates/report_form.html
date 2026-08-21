@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-header"><div><h1>Modify Prediction Report</h1></div></div>
+<div class="card form-card">
+<form method="post">
+  <label>Prediction</label>
+  <input type="text" name="prediction" value="{{ report.prediction if report else '' }}" required>
+  <label>Risk Level</label>
+  <input type="text" name="risk_level" value="{{ report.risk_level if report else '' }}" required>
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">Update</button>
+    <a class="btn" href="{{ url_for('reports') }}">Cancel</a>
+  </div>
+</form>
+</div>
+{% endblock %}

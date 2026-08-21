@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block page_heading %}Academic Results{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mt-4"><div><span class="page-kicker">ACADEMIC RESULTS</span><h2>Academic Result Management</h2>
+<p class="text-muted mb-0">View, add, modify and delete student semester results.</p></div>
+<a class="btn btn-primary" href="{{ url_for('add_result_select') }}">+ Add Result</a></div>
+<div class="card panel mt-3"><div class="card-body table-responsive">
+<table class="table align-middle"><thead><tr><th>ID</th><th>Roll No.</th><th>Student</th><th>Department</th><th>Semester</th><th>Total</th><th>Percentage</th><th>Grade</th><th>Result</th><th>Actions</th></tr></thead>
+<tbody>
+{% for r in results %}
+<tr><td>{{ r.result_id }}</td><td><b>{{ r.roll_no }}</b></td><td>{{ r.name }}</td><td>{{ r.department or '-' }}</td><td>{{ r.semester }}</td>
+<td>{{ r.total_marks if r.total_marks is not none else '-' }}</td><td>{{ r.percentage if r.percentage is not none else '-' }}%</td><td>{{ r.grade or '-' }}</td><td>{{ r.result_status or '-' }}</td>
+<td class="text-nowrap"><a class="btn btn-sm btn-outline-primary" href="{{ url_for('edit_result',result_id=r.result_id) }}">Modify</a>
+<form method="post" action="{{ url_for('delete_result',result_id=r.result_id) }}" class="d-inline" onsubmit="return confirm('Delete this academic result?');"><button class="btn btn-sm btn-danger" type="submit">Delete</button></form></td></tr>
+{% else %}<tr><td colspan="10" class="text-center text-muted py-4">No academic results found. Click “Add Result” to enter a result.</td></tr>{% endfor %}
+</tbody></table></div></div>
+{% endblock %}

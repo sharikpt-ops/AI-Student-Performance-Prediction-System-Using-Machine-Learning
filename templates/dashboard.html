@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% block page_heading %}Dashboard{% endblock %}
 {% block content %}
-<div class="welcome mt-4"><div><span class="page-kicker">AI-POWERED ANALYTICS</span><h2>Welcome back, {{session.get('username')}}!</h2><p>Monitor academic records and generate student performance predictions.</p></div><a href="{{url_for('add_student')}}" class="btn btn-light">+ Add Student</a></div>
+<div class="welcome mt-4"><div><span class="small">AI-POWERED ANALYTICS</span><h2>Welcome back, {{session.get('username')}}!</h2><p>Monitor academic records and generate student performance predictions.</p></div><a href="{{url_for('add_student')}}" class="btn btn-light">+ Add Student</a></div>
 <div class="row g-4 mt-1">
 <div class="col-md-4"><div class="stat-card"><div class="stat-icon">◉</div><div><small>Total Students</small><h2>{{students}}</h2></div></div></div>
 <div class="col-md-4"><div class="stat-card"><div class="stat-icon">◎</div><div><small>Total Predictions</small><h2>{{predictions}}</h2></div></div></div>
