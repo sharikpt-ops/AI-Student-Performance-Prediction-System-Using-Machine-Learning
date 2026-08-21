@@ -1,8 +1,0 @@
-{% extends 'base.html' %}{% block page_heading %}Student Management{% endblock %}
-{% block content %}
-<div class="d-flex justify-content-between align-items-center mt-4"><div><span class="page-kicker">ACADEMIC RECORDS</span><h2>Students</h2></div><a class="btn btn-primary" href="{{url_for('add_student')}}">+ Add Student</a></div>
-<div class="card panel mt-3"><div class="card-body"><div class="table-responsive"><table class="table align-middle">
-<thead><tr><th>Roll No.</th><th>Student Name</th><th>Department</th><th>Semester</th><th>Action</th></tr></thead>
-<tbody>{% for s in students %}<tr><td><b>{{s.roll_no}}</b></td><td>{{s.name}}</td><td>{{s.department or '-'}}</td><td>{{s.semester or '-'}}</td><td><a class="btn btn-sm btn-outline-primary" href="{{url_for('academic',student_id=s.student_id)}}">Academic & Predict</a></td></tr>{% else %}<tr><td colspan="5" class="text-center text-muted py-4">No students found.</td></tr>{% endfor %}</tbody>
-</table></div></div></div>
-{% endblock %}
