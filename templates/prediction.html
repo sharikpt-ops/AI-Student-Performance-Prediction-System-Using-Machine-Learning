@@ -1,7 +1,0 @@
-{% extends 'base.html' %}{% block page_heading %}Prediction Result{% endblock %}
-{% block content %}<div class="result-wrap mt-5"><div class="result-card">
-<span class="page-kicker">AI PREDICTION COMPLETE</span><h1 class="mt-2">{{result}}</h1><p class="lead">Predicted academic outcome</p>
-<div class="confidence"><span>Model Confidence</span><strong>{% if confidence is not none %}{{'%.2f'|format(confidence*100)}}%{% else %}N/A{% endif %}</strong></div>
-<div class="model-info"><span>Algorithm</span><b>{{algorithm}}</b></div>
-<a href="{{url_for('students')}}" class="btn btn-primary mt-4">Back to Students</a><a href="{{url_for('reports')}}" class="btn btn-light mt-4 ms-2">View Reports</a>
-</div></div>{% endblock %}
