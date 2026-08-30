@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block title %}Login | AI-Student Performance{% endblock %}
+{% block auth_content %}
+<div class="login-shell"><div class="login-card">
+<div class="login-logo">AI/ML</div><h2>Student Performance</h2><p class="text-muted">Prediction System</p>
+<form method="post" class="mt-4"><label>Username</label><input class="form-control form-control-lg mb-3" name="username" required>
+<label>Password</label><input class="form-control form-control-lg mb-3" type="password" name="password" required>
+<button class="btn btn-primary btn-lg w-100">Sign In</button></form>
+</div></div>
+{% endblock %}
